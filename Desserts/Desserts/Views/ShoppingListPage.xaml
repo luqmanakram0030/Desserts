@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Background="{StaticResource Gradient}"
     x:Class="Desserts.Views.ShoppingListPage" xmlns:Helper="clr-namespace:Desserts.Helpers">
     <ContentPage.Content>
         <StackLayout>
@@ -33,7 +33,11 @@
                                      
                                             <Grid>
 
-                                                 <Frame BorderColor="Transparent" BackgroundColor="#e9e9e9" CornerRadius="10" Grid.ColumnSpan="2" HasShadow="False"  Padding="0" HeightRequest="105">
+                                                <Frame HasShadow="False"
+                                                       Padding="10,5"
+                                                       BorderColor="White"
+                                                       BackgroundColor="White"
+                                                       CornerRadius="8">
                                                     <StackLayout Orientation="Horizontal">
                                                  <Label Text="{Binding id}"
                                                                    TextColor="Black"
@@ -85,12 +89,12 @@
                                                  </StackLayout>
                                                 </Frame>
                                                 <ImageButton BackgroundColor="Transparent"
-                                                             Padding="0"
+                                                             Padding="0" HeightRequest="30"
                                                              Margin="{OnPlatform Android='0', UWP='0,0,20,0'}"
                                                              HorizontalOptions="EndAndExpand"
-                                                             VerticalOptions="StartAndExpand"
+                                                             VerticalOptions="CenterAndExpand"
                                                              Source="{FontImage FontFamily=UserIcon,
-                                                                Glyph={x:Static Helper:IconFonts.DeleteForeverOutline},Color=Red,Size={OnPlatform Android='20', UWP='8'}}"
+                                                                Glyph={x:Static Helper:IconFonts.DeleteForeverOutline},Color=Red,Size={OnPlatform Android='30', UWP='8'}}"
                                                             Command="{Binding Path=BindingContext.DeleteFromCartCMD, Source={x:Reference iList}}" 
                                                             CommandParameter="{Binding .}"/>
 

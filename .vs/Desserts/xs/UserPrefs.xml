@@ -1,24 +1,60 @@
 ﻿<Properties StartupConfiguration="{8903959B-6583-43CE-BA00-F72A3127A9A4}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts/Views/DessertDetailPage.xaml.cs" relfile="Desserts/Desserts/Views/DessertDetailPage.xaml.cs" line="118" column="1" />
+      <Breakpoint file="/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts/ViewModels/ShoppingListViewModel.cs" relfile="Desserts/Desserts/ViewModels/ShoppingListViewModel.cs" line="58" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Desserts.Android PreferredExecutionTarget="Android.pixel_5_-_api_33" />
+  <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.pixel_5_-_api_33" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Desserts/Desserts/ViewModels/ShoppingListViewModel.cs">
+    <Files>
+      <File FileName="Desserts/Desserts/Services/Implementation/BuyingListService.cs" Line="86" Column="31" />
+      <File FileName="Desserts/Desserts/Models/ingredientModel.cs" Line="10" Column="26" />
+      <File FileName="Desserts/Desserts/Services/Implementation/DessertService.cs" Line="30" Column="10" />
+      <File FileName="Desserts/Desserts/Views/DessertDetailPage.xaml.cs" Line="119" Column="1" />
+      <File FileName="Desserts/Desserts/Views/DessertDetailPage.xaml" Line="145" Column="87" />
+      <File FileName="Desserts/Desserts/Views/DashboardPage.xaml" Line="115" Column="189" />
+      <File FileName="Desserts/Desserts/Views/DashboardPage.xaml.cs" Line="21" Column="53" />
+      <File FileName="Desserts/Desserts/Views/ShoppingListPage.xaml" Line="95" Column="95" />
+      <File FileName="Desserts/Desserts/Views/ShoppingListPage.xaml.cs" Line="11" Column="4" />
+      <File FileName="Desserts/Desserts/ViewModels/ShoppingListViewModel.cs" Line="64" Column="1" />
+      <File FileName="Desserts/Desserts/Views/AppShell.xaml.cs" Line="1" Column="1" />
+      <File FileName="Desserts/Desserts/ViewModels/AddDessertViewModel.cs" Line="65" Column="10" />
+      <File FileName="Desserts/Desserts/Views/MyDessertsPage.xaml.cs" Line="23" Column="46" />
+      <File FileName="Desserts/Desserts/ViewModels/DashboardViewModel.cs" Line="259" Column="35" />
+      <File FileName="Desserts/Desserts/Models/DessertModel.cs" Line="12" Column="40" />
+      <File FileName="Desserts/Desserts/Helpers/IconFonts.cs" Line="441" Column="35" />
+      <File FileName="Desserts/Desserts/Views/AddDessertPage.xaml" Line="10" Column="52" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Desserts" expanded="True" selected="True">
-            <Node name="Desserts">
+          <Node name="Desserts">
+            <Node name="Desserts" expanded="True">
+              <Node name="Helpers" expanded="True" />
               <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="Implementation" expanded="True" />
+                <Node name="Interface" expanded="True" />
+              </Node>
+              <Node name="ViewModels" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="AppShell.xaml" expanded="True" />
+                <Node name="DashboardPage.xaml" expanded="True" />
+                <Node name="DessertDetailPage.xaml" expanded="True" />
+                <Node name="MyDessertsPage.xaml" expanded="True" />
+                <Node name="ShoppingListPage.xaml" expanded="True" />
+              </Node>
+              <Node name="App.xaml" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.MonoDroid LastDeploySdkVersion="13.2.2.0" />
-  <MonoDevelop.Ide.ItemProperties.Desserts.Android PreferredExecutionTarget="Android.pixel_5_-_api_33" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <Xamarin.Addins.Core.Project ActiveDebugTarget="Android.pixel_5_-_api_33" />
+  <MultiItemStartupConfigurations />
 </Properties>
