@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Desserts.Views.DessertDetailPage"  
+            NavigationPage.HasNavigationBar="False"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Shell.TabBarIsVisible="False"
+             xmlns:Helper="clr-namespace:Desserts.Helpers"
+             xmlns:controls="clr-namespace:Desserts.Helpers"
+             Background="{StaticResource Gradient}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*,Auto" >
+            <Grid ColumnDefinitions="30,*">
+                    <ImageButton Source="Assets/back.png"
+                                 VerticalOptions="CenterAndExpand"
+                                 HeightRequest="{OnPlatform Android='20', iOS='20',UWP='25'}"
+                                 WidthRequest="{OnPlatform Android='20', iOS='20',UWP='25'}"
+                                 Padding="0"
+                                 Margin="15,20,0,0"
+                                 BackgroundColor="Transparent"
+                                 Grid.Column="0"
+                                 x:Name="back"
+                                 Clicked="back_Clicked"/>
+                    <ImageButton VerticalOptions="CenterAndExpand"
+                                 HeightRequest="{OnPlatform Android='20', iOS='20',UWP='25'}"
+                                 WidthRequest="{OnPlatform Android='20', iOS='20',UWP='25'}"
+                                 Padding="0"
+                                 Margin="0,20,15,0"
+                                 HorizontalOptions="EndAndExpand"
+                                 BackgroundColor="Transparent"
+                                 Grid.Column="1"
+                                 x:Name="fav"
+                                 Clicked="fav_Clicked"/>
+                    
+                </Grid>
+            <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="1" Margin="20,20,20,20">
+                <StackLayout  Spacing="10"  HorizontalOptions="CenterAndExpand">
+
+                    <Image x:Name="img"
+                           HeightRequest="250"/>
+
+                    <Label x:Name="name"
+                           FontSize="Large"
+                           HorizontalTextAlignment="Center"
+                           FontAttributes="Bold" 
+                           FontFamily="OpenSansSemibold"
+                           TextColor="Black" />
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,5,0,0" Spacing="50">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                            <Image Source="Assets/clock.png"  HeightRequest="18" />
+                            <Label HorizontalOptions="CenterAndExpand"    FontAttributes="Bold" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" TextColor="Black"   Margin="0,0,0,0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span x:Name="time"   FontSize="15" FontFamily="OpenSansSemibold"/>
+
+                                    </FormattedString>
+
+                                </Label.FormattedText>
+                            </Label>
+
+                        </StackLayout >
+                        <StackLayout Orientation="Horizontal" Grid.Column="1"
+                                                          HorizontalOptions="Start">
+                            <Image Source="Assets/meter.png" HeightRequest="18"/>
+                            <Label x:Name="Def" FontSize="15" FontFamily="OpenSansSemibold" Margin="0,0,10,0" TextColor="Black"  HorizontalOptions="EndAndExpand"/>
+
+
+                        </StackLayout>
+                    </StackLayout>
+
+                    <Label x:Name="des" FontSize="Large"
+                           HorizontalTextAlignment="Center" 
+                           FontAttributes="Bold" 
+                           FontFamily="OpenSansSemibold"
+                            Text="" TextColor="Black"
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="Center" />
+                    <CollectionView x:Name="ingredientListView" HeightRequest="300"  HorizontalOptions="CenterAndExpand" Margin="20">
+                        <!--<CollectionView.Header>
+                                <Label Text="Ingredients:" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="18" TextColor="Black"
+                                    VerticalOptions="CenterAndExpand" 
+                                    />
+                            </CollectionView.Header>-->
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid RowDefinitions="Auto,Auto" RowSpacing="10">
+
+
+                                    <StackLayout IsVisible="{Binding HeadingVisible}" Grid.Row="0" Spacing="0" >
+                                        <Label Text="{Binding Heading}" FontAttributes="Bold" FontSize="18" TextColor="Black"  />
+                                        <Label Text="{Binding HeadingDescription}"  FontAttributes="Bold" FontSize="12" TextColor="Black"  />
+
+                                    </StackLayout>
+                                    <Grid Grid.Row="1" ColumnDefinitions="30,*" ColumnSpacing="15">
+                                        <Label Text="{Binding id}"  FontSize="18" TextColor="Black" />
+                                        <Label Text="{Binding description}" Grid.Column="1"  FontSize="16" TextColor="Black" Margin="0,0,20,20"/>
+                                    </Grid>
+
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+            </ScrollView>
+            <Button VerticalOptions="EndAndExpand"
+                    ImageSource="{FontImage FontFamily=UserIcon, 
+                                        Glyph={x:Static Helper:IconFonts.CommentOutline} , Color=White ,Size=20}"
+                    Grid.Row="2"
+                    Text="Comment" 
+                    ContentLayout="Left,10"
+                    FontAttributes="Bold"
+                    Margin="0,0,0,20"
+                    FontFamily="OpenSansSemibold"
+                    Clicked="Button_Clicked"
+                    HorizontalOptions="CenterAndExpand"
+                    Padding="40,10"
+                    BackgroundColor="SaddleBrown"
+                    TextColor="White"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

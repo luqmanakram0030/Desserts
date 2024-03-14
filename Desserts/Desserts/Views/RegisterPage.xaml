@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:Helper="clr-namespace:Desserts.Helpers"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False"
+    x:Class="Desserts.Views.RegisterPage"
+    Background="{StaticResource Gradient}">
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="Auto,*,Auto"
+              Margin="20">
+
+            <ImageButton Source="{FontImage FontFamily=UserIcon,
+                                            Glyph={x:Static Helper:IconFonts.ChevronLeft}, Color=Black ,Size=30}"
+                                 BackgroundColor="Transparent"
+                                 HorizontalOptions="StartAndExpand"
+                                 VerticalOptions="StartAndExpand"
+                                 x:Name="back"
+                         Grid.Row="0"
+                                 Command="{Binding loginCmd}"/>
+
+            <ScrollView Grid.Row="1">
+                <StackLayout Spacing="10"
+                             VerticalOptions="CenterAndExpand">
+
+                    <Label Text="Register"
+                           FontSize="Large"
+                           HorizontalTextAlignment="Center"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           Margin="0,10"/>
+                    <Frame  BorderColor="Gray"
+               CornerRadius="8"
+               BackgroundColor="White"
+               Padding="10,5"
+               HasShadow="False">
+                     <Grid ColumnDefinitions="Auto,*,Auto">
+
+                <Image   Source="{FontImage FontFamily=UserIcon,
+                                                            Glyph={x:Static Helper:IconFonts.AccountOutline} , Color=LightGray ,Size=20}"
+                       Grid.Column="0"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
+                    <Entry Placeholder="name" Grid.Column="1" PlaceholderColor="Gray" 
+                                         
+                           BackgroundColor="White"  Text="{Binding User.FullName, Mode=TwoWay}"/>
+                        </Grid>
+                    </Frame>
+                    <Frame  BorderColor="Gray"
+               CornerRadius="8"
+               BackgroundColor="White"
+               Padding="10,5"
+               HasShadow="False">
+                     <Grid ColumnDefinitions="Auto,*,Auto">
+
+                <Image   Source="{FontImage FontFamily=UserIcon,
+                                                            Glyph={x:Static Helper:IconFonts.EmailOutline} , Color=LightGray ,Size=20}"
+                       Grid.Column="0"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
+                    <Entry Placeholder="email" Grid.Column="1" PlaceholderColor="Gray" 
+                           
+                           BackgroundColor="White"                Text="{Binding User.Email, Mode=TwoWay}"/>
+                        </Grid>
+                    </Frame>
+                    <Frame  BorderColor="Gray"
+               CornerRadius="8"
+               BackgroundColor="White"
+               Padding="10,5"
+               HasShadow="False">
+                     <Grid ColumnDefinitions="Auto,*,Auto">
+
+                <Image   Source="{FontImage FontFamily=UserIcon,
+                                                            Glyph={x:Static Helper:IconFonts.PhoneOutline} , Color=LightGray ,Size=20}"
+                       Grid.Column="0"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
+                            <Entry Placeholder="mobile number" Grid.Column="1" 
+                           BackgroundColor="White" PlaceholderColor="Gray" 
+                                           Text="{Binding User.PhoneNumber, Mode=TwoWay}"/>
+                        </Grid>
+                    </Frame>
+                     <Frame  BorderColor="Gray"
+               CornerRadius="8"
+               BackgroundColor="White"
+               Padding="10,5"
+               HasShadow="False">
+                     <Grid ColumnDefinitions="Auto,*,Auto">
+
+                <Image   Source="{FontImage FontFamily=UserIcon,
+                                                            Glyph={x:Static Helper:IconFonts.LockOutline} , Color=LightGray ,Size=20}"
+                       Grid.Column="0"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
+                            <Entry Placeholder="password" Grid.Column="1" IsPassword="True" PlaceholderColor="Gray" 
+                           BackgroundColor="White"
+                                           Text="{Binding User.Password, Mode=TwoWay}"/>
+                        </Grid>
+                    </Frame>
+                    <Frame  BorderColor="Gray"
+               CornerRadius="8"
+               BackgroundColor="White"
+               Padding="10,5"
+               HasShadow="False">
+                     <Grid ColumnDefinitions="Auto,*,Auto">
+
+                <Image   Source="{FontImage FontFamily=UserIcon,
+                                                            Glyph={x:Static Helper:IconFonts.LockOutline} , Color=LightGray ,Size=20}"
+                       Grid.Column="0"
+                       HorizontalOptions="StartAndExpand"
+                       VerticalOptions="CenterAndExpand"/>
+                            <Entry Placeholder="confirm password" Grid.Column="1" IsPassword="True" PlaceholderColor="Gray" 
+                           BackgroundColor="White"
+                                           Text="{Binding ConfirmPassword, Mode=TwoWay}"/>
+                        </Grid>
+                    </Frame>
+                    <!--<control:ImageEntryControl LImageSource="{FontImage FontFamily=UserIcon,
+                                                            Glyph={x:Static Helper:IconFonts.AccountOutline} , Color=LightGray ,Size=20}"
+                                           Placeholder="Name"
+                                               Text="{Binding User.FullName}"/>
+
+                    <control:ImageEntryControl LImageSource="{FontImage FontFamily=UserIcon,
+                                                            Glyph={x:Static Helper:IconFonts.EmailOutline} , Color=LightGray ,Size=20}"
+                                           Placeholder="Email"
+                                           Keyboard="Email"
+                                               Text="{Binding User.Email}"/>
+
+                    <control:ImageEntryControl LImageSource="{FontImage FontFamily=UserIcon,
+                                                            Glyph={x:Static Helper:IconFonts.PhoneOutline} , Color=LightGray ,Size=20}"
+                                           Placeholder="Mobile Number"
+                                           Keyboard="Telephone"
+                                               Text="{Binding User.PhoneNumber}"/>
+
+                    <control:PasswordEntry LImageSource="{FontImage FontFamily=UserIcon,
+                                                            Glyph={x:Static Helper:IconFonts.LockOutline} , Color=LightGray ,Size=20}"
+                                       Placeholder="Password"
+                                               Text="{Binding User.Password}"/>
+
+                    <control:PasswordEntry LImageSource="{FontImage FontFamily=UserIcon,
+                                                            Glyph={x:Static Helper:IconFonts.LockOutline} , Color=LightGray ,Size=20}"
+                                       Placeholder="Confirm Password"
+                                               Text="{Binding ConfirmPassword}"/>-->
+
+                    <Button Text="Register"
+                            HorizontalOptions="CenterAndExpand"
+                            WidthRequest="250"
+                            Margin="0,20,0,10"
+                            FontAttributes="Bold"
+                            TextTransform="None"
+                            CornerRadius="8"
+                            BackgroundColor="{StaticResource bgcolor}"
+                            Command="{Binding SignupCmd}"/>
+
+                </StackLayout>
+            </ScrollView>
+
+
+            <StackLayout Orientation="Horizontal"
+                         Grid.Row="2"
+                         VerticalOptions="EndAndExpand"
+                             HorizontalOptions="CenterAndExpand">
+
+                <Label Text="Already have an account?"
+                           FontSize="14"
+                           TextColor="Black"
+                           VerticalTextAlignment="Center"/>
+
+                <Button Text="Login Now"
+                            TextColor="{StaticResource bgcolor}"
+                            Padding="0"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            FontAttributes="Bold"
+                            TextTransform="None"
+                            BackgroundColor="Transparent"
+                            x:Name="login"
+                            Command="{Binding loginCmd}"/>
+
+            </StackLayout>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
+

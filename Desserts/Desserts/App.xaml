@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desserts.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#81248A</Color>
+            <Color x:Key="SecondoryColor">#E70B89</Color>
+            <LinearGradientBrush x:Key="Gradient"  StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#f7dbbd" Offset="0.1" />
+                <GradientStop Color="#ffffff" Offset="1.0" />
+            </LinearGradientBrush>
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+            <Style TargetType="ScrollView">
+                <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+                <Setter Property="HorizontalScrollBarVisibility" Value="Never" />
+            </Style>
+            <Style TargetType="CollectionView">
+                <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+                <Setter Property="HorizontalScrollBarVisibility" Value="Never" />
+            </Style>
+            <Style x:Key="btnStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#00B6B2" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="TextTransform" Value="None" />
+                <Setter Property="FontFamily" Value="BarlowSemiBold" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="HeightRequest" Value="48" />
+            </Style>
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontFamily" Value="BarlowBold" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+            <Style x:Key="entryFrameStyle" TargetType="Frame">
+                <Setter Property="HasShadow" Value="False" />
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="BorderColor" Value="LightGray" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="HeightRequest" Value="48" />
+                <Setter Property="Padding" Value="10,0" />
+            </Style>
+         
+
+            <Color x:Key="Primary">#E5E9EE</Color>
+            <Color x:Key="PrimaryDark">#75849D</Color>
+            <Color x:Key="Secondary">#B5BBC2</Color>
+            <Color x:Key="Accent">LightGray</Color>
+            <Color x:Key="LightColor">LightGray</Color>
+
+
+
+            <Color x:Key="InputBg">#F2f2f2</Color>
+            <Color x:Key="darkcolor">#59585A</Color>
+            <Color x:Key="bgcolor">#00B6B2</Color>
+            <Color x:Key="baseColor">#00B6B2</Color>
+
+            <ControlTemplate x:Key="FrameRadioTemplate">
+
+                <Frame BorderColor="LightGray"
+                       BackgroundColor="White"
+                       CornerRadius="8"
+                       HasShadow="False"
+                       Padding="8">
+
+                    <ContentPresenter>
+                        <ContentPresenter.Resources>
+
+                            <Style TargetType="Grid">
+
+                                <Style.Triggers>
+
+                                    <DataTrigger TargetType="Grid"
+                                             Binding="{Binding Path=IsChecked,
+                                                   Source={x:RelativeSource AncestorType={x:Type RadioButton}}}"
+                                             Value="True">
+                                    </DataTrigger>
+
+                                </Style.Triggers>
+
+                            </Style>
+                        </ContentPresenter.Resources>
+                    </ContentPresenter>
+
+                    <VisualStateManager.VisualStateGroups>
+
+                        <VisualStateGroup x:Name="CheckedStates">
+
+                            <VisualState x:Name="Checked">
+
+                                <VisualState.Setters>
+                                    <Setter Property="BorderColor" Value="Transparent"/>
+                                    <Setter Property="BackgroundColor" Value="Transparent"/>
+                                </VisualState.Setters>
+
+                            </VisualState>
+
+                            <VisualState x:Name="Unchecked">
+
+                                <VisualState.Setters>
+                                    <Setter Property="BorderColor" Value="Transparent"/>
+                                    <Setter Property="BackgroundColor" Value="Transparent"/>
+                                </VisualState.Setters>
+
+                            </VisualState>
+
+                        </VisualStateGroup>
+
+                    </VisualStateManager.VisualStateGroups>
+
+                </Frame>
+
+            </ControlTemplate>
+
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

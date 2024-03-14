@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desserts.Views.MyDessertsPage"   
+            xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+            NavigationPage.HasNavigationBar="False"
+             xmlns:controls="clr-namespace:Desserts.Helpers"
+             xmlns:Helper="clr-namespace:Desserts.Helpers"
+             Background="{StaticResource Gradient}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*" Margin="0,0,0,20">
+            <Grid Grid.Row="0"
+                  ColumnDefinitions="*,Auto"
+                       Margin="20,15,20,10">
+                <Frame HasShadow="False"
+                       Grid.Column="0"
+                       BackgroundColor="White"
+                       BorderColor="Transparent"
+                       Padding="{OnPlatform Android='16,0,10,0', iOS='16,0,16,0',UWP='10,0,10,0'}"
+                       HeightRequest="50"
+                       CornerRadius="16">
+                    <Grid ColumnDefinitions="30,*">
+                        <Image Source="Assets/search.png"
+                               VerticalOptions="Center"
+                               HeightRequest="24" />
+
+                        <Entry VerticalOptions="Center"
+                               x:Name="Search" Text="{Binding SearchText, Mode=TwoWay}"
+                               BackgroundColor="White"
+                               Grid.Column="1"
+                               Placeholder="Search here"
+                               TextColor="#2b2b2b"
+                               FontSize="Small"
+                               FontFamily="Regular"
+                               Margin="{OnPlatform Android='0,0,0,0', iOS='0'}"
+                               TextChanged="Search_TextChanged"/>
+                    </Grid>
+                </Frame>
+                <Button Text="Add 🥞"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        Grid.Column="1"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="EndAndExpand"
+                        Padding="0"
+                        WidthRequest="60"
+                        HeightRequest="30"
+                        CornerRadius="{OnPlatform Android='30',UWP='10'}"
+                        BackgroundColor="{StaticResource baseColor}"
+                        Command="{Binding AddCmd,Mode=TwoWay}"/>
+            </Grid>
+
+            <StackLayout Grid.Row="1">
+
+                <StackLayout Orientation="Horizontal"
+                             IsVisible="{Binding IsBusy,Mode=TwoWay}"
+                             HorizontalOptions="CenterAndExpand">
+                    <ActivityIndicator HeightRequest="25"
+                                                IsRunning="True"
+                                                WidthRequest="25"
+                                                Color="{StaticResource baseColor}" />
+
+                    <Label VerticalTextAlignment="Center"
+                           Text="Loading ..." 
+                           TextColor="Black"/>
+                </StackLayout>
+                <CollectionView x:Name="dessertlist"
+                             IsVisible="{Binding Busy,Mode=TwoWay}" VerticalScrollBarVisibility="Never" Margin="0,0,25,0" ItemsSource="{Binding dessertModels}">
+                     <CollectionView.EmptyView>
+                         <Label Text="No available desserts at this moment."
+                                TextColor="Black"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"/>
+                     </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <SwipeView BackgroundColor="Transparent">
+
+                                <SwipeView.RightItems>
+                                    <SwipeItems >
+                                        <SwipeItemView BackgroundColor="Transparent"
+                                                           Command="{Binding Path=BindingContext.DeleteCmd, Source={x:Reference dessertlist}}"
+                                                           CommandParameter="{Binding}">
+                                            <Frame BackgroundColor="{StaticResource SecondoryColor}"
+                                                   Padding="0"
+                                                   CornerRadius="10"
+                                                   Margin="0,0,20,0"
+                                                        WidthRequest="65"
+                                                        HeightRequest="65"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        BorderColor="{StaticResource SecondoryColor}">
+                                                <StackLayout HorizontalOptions="CenterAndExpand"
+                                                                 VerticalOptions="CenterAndExpand">
+                                                    <Image Source="{FontImage FontFamily=UserIcon,
+                                                                        Glyph={x:Static Helper:IconFonts.DeleteOutline},Color=White,Size=35}"
+                                                               Aspect="AspectFit"
+                                                               HorizontalOptions="CenterAndExpand"/>
+                                                    <Label Text="Delete"
+                                                           FontAttributes="Bold"
+                                                               HorizontalTextAlignment="Center"
+                                                                TextColor="White"
+                                                                FontSize="12"/>
+                                                </StackLayout>
+                                            </Frame>
+                                        </SwipeItemView>
+                                        <SwipeItemView BackgroundColor="Transparent"
+                                                           Command="{Binding Path=BindingContext.EditCmd, Source={x:Reference dessertlist}}"
+                                                           CommandParameter="{Binding}">
+                                            <Frame BackgroundColor="{StaticResource baseColor}"
+                                                   Padding="0"
+                                                   Margin="20,0"
+                                                   CornerRadius="10"
+                                                        WidthRequest="65"
+                                                        HeightRequest="65"
+                                                        VerticalOptions="CenterAndExpand"
+                                                        BorderColor="{StaticResource baseColor}">
+                                                <StackLayout HorizontalOptions="CenterAndExpand"
+                                                                 VerticalOptions="CenterAndExpand">
+                                                    <Image Source="{FontImage FontFamily=UserIcon,
+                                                                        Glyph={x:Static Helper:IconFonts.PencilOutline},Color=White,Size=35}"
+                                                               Aspect="AspectFit"
+                                                               HorizontalOptions="CenterAndExpand"
+                                                               />
+                                                    <Label Text="Edit"
+                                                           FontAttributes="Bold"
+                                                               HorizontalTextAlignment="Center"
+                                                                TextColor="White"
+                                                                FontSize="12"/>
+                                                </StackLayout>
+                                            </Frame>
+                                        </SwipeItemView>
+
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Grid RowDefinitions="{OnPlatform Android='110', UWP='110'}" >
+
+                                    <Grid RowDefinitions="105" VerticalOptions="End" Margin="50,0,0,0">
+                                        <Frame BorderColor="Transparent" BackgroundColor="#e9e9e9" CornerRadius="10" Grid.ColumnSpan="2" HasShadow="False"  Padding="0" HeightRequest="105">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.SelectCmd, Source={x:Reference dessertlist}}" CommandParameter="{Binding .}" />
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+                                        <Frame CornerRadius="12"
+                                           BackgroundColor="{StaticResource baseColor}"
+                                           HeightRequest="80" 
+                                           WidthRequest="80"
+                                           Padding="0"
+                                           Grid.Column="0"
+                                           Margin="-35,-30,0,0"
+                                            HorizontalOptions="StartAndExpand" 
+                                           VerticalOptions="EndAndExpand"  >
+                                            <Image HeightRequest="70" WidthRequest="70" Aspect="AspectFit" VerticalOptions="CenterAndExpand" Source="{Binding image}"/>
+                                        </Frame>
+                                        <StackLayout Grid.ColumnSpan="2" VerticalOptions="StartAndExpand" Spacing="5" Margin="60,10,05,0" HorizontalOptions="StartAndExpand">
+
+                                            <Label Text="{Binding name}"   FontSize="18"  FontFamily="OpenSansSemibold" TextColor="Black"   Margin="0,0,0,0"/>
+                                            <Label Text="{Binding description}" FontSize="12" TextColor="Gray" LineBreakMode="TailTruncation" MaxLines="1" HorizontalOptions="StartAndExpand"/>
+                                            <StackLayout Orientation="Horizontal"  Margin="0,5,0,0" Spacing="50">
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="{OnPlatform Android='Start', UWP='Start'}" >
+                                                    <Image Source="Assets/clock.png"  HeightRequest="18" />
+                                                    <Label     FontAttributes="Bold" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" TextColor="Black"   Margin="0,0,0,0">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <!--<Span Text="⏱" FontSize="18" FontFamily="OpenSansSemibold"/>-->
+                                                                <Span Text="{Binding time}"   FontSize="15" FontFamily="OpenSansSemibold"/>
+
+                                                            </FormattedString>
+
+                                                        </Label.FormattedText>
+                                                    </Label>
+
+                                                </StackLayout >
+                                                <StackLayout Orientation="Horizontal" Grid.Column="1" HorizontalOptions="{OnPlatform Android='Start', UWP='Start'}"
+                                             >
+                                                    <Image Source="Assets/meter.png" HeightRequest="18"/>
+                                                    <Label Text="{Binding difficulty}" TextColor="Black" FontSize="15" FontFamily="OpenSansSemibold" Margin="0,0,10,0"  HorizontalOptions="EndAndExpand"/>
+
+
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.SelectCmd, Source={x:Reference dessertlist}}" CommandParameter="{Binding .}" />
+
+                                        </Grid.GestureRecognizers>
+
+                                    </Grid>
+                                    <ImageButton Source="{Binding fav_image,Mode=TwoWay}"
+                                                 HeightRequest="20" 
+                                                 HorizontalOptions="EndAndExpand" 
+                                                 VerticalOptions="EndAndExpand"
+                                                 Margin="20"
+                                                 BackgroundColor="Transparent"
+                                                 Command="{Binding Path=BindingContext.FavCmd, Source={x:Reference dessertlist}}"
+                                                 CommandParameter="{Binding .}"/>
+
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.SelectCmd, Source={x:Reference dessertlist}}" CommandParameter="{Binding .}" />
+
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+
+                            </SwipeView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="0" VerticalItemSpacing="20"/>
+                    </CollectionView.ItemsLayout>
+
+                </CollectionView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

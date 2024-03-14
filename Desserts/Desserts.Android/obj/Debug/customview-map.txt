@@ -1,0 +1,62 @@
+@string/appbar_scrolling_view_behavior;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/rootlayout.xml
+adaptive-icon;obj/Debug/res/mipmap-anydpi-v26/ic_launcher.xml
+adaptive-icon;obj/Debug/res/mipmap-anydpi-v26/ic_launcher_round.xml
+adaptive-icon;obj/Debug/res/mipmap-anydpi-v26/icon.xml
+adaptive-icon;obj/Debug/res/mipmap-anydpi-v26/icon_round.xml
+alpha;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/anim/enterfromleft.xml
+alpha;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/anim/exittoleft.xml
+androidx.appcompat.widget.Toolbar;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/fallbacktoolbardonotuse.xml
+androidx.appcompat.widget.Toolbar;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/rootlayout.xml
+androidx.appcompat.widget.Toolbar;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/shellcontent.xml
+androidx.appcompat.widget.Toolbar;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/toolbar.xml
+androidx.coordinatorlayout.widget.CoordinatorLayout;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/rootlayout.xml
+androidx.coordinatorlayout.widget.CoordinatorLayout;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/shellcontent.xml
+attr;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/values/attrs.xml
+background;obj/Debug/res/mipmap-anydpi-v26/ic_launcher.xml
+background;obj/Debug/res/mipmap-anydpi-v26/ic_launcher_round.xml
+background;obj/Debug/res/mipmap-anydpi-v26/icon.xml
+background;obj/Debug/res/mipmap-anydpi-v26/icon_round.xml
+cache-path;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/65/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
+color;obj/Debug/res/values/colors.xml
+color;obj/Debug/res/values/ic_launcher_background.xml
+com.google.android.material.appbar.AppBarLayout;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/flyoutcontent.xml
+com.google.android.material.appbar.AppBarLayout;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/rootlayout.xml
+com.google.android.material.appbar.AppBarLayout;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/shellcontent.xml
+com.google.android.material.bottomnavigation.BottomNavigationView;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/bottomtablayout.xml
+com.google.android.material.tabs.TabLayout;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/fallbacktabbardonotuse.xml
+com.google.android.material.tabs.TabLayout;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/rootlayout.xml
+com.google.android.material.tabs.TabLayout;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/tabbar.xml
+declare-styleable;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/values/attrs.xml
+external-cache-path;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/65/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
+external-path;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/65/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
+foreground;obj/Debug/res/mipmap-anydpi-v26/ic_launcher.xml
+foreground;obj/Debug/res/mipmap-anydpi-v26/ic_launcher_round.xml
+foreground;obj/Debug/res/mipmap-anydpi-v26/icon.xml
+foreground;obj/Debug/res/mipmap-anydpi-v26/icon_round.xml
+FrameLayout;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/64/jl/res/layout/camerafragment.xml
+FrameLayout;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/bottomtablayout.xml
+item;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/values/styles.xml
+LinearLayout;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/bottomtablayout.xml
+paths;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/65/jl/res/xml/xamarin_essentials_fileprovider_file_paths.xml
+resources;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/googsvcsjson/values/goog_svcs_json.xml
+resources;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/values/attrs.xml
+resources;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/values/strings.xml
+resources;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/values/styles.xml
+resources;obj/Debug/res/values/colors.xml
+resources;obj/Debug/res/values/ic_launcher_background.xml
+resources;obj/Debug/res/values/styles.xml
+set;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/anim/enterfromleft.xml
+set;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/anim/enterfromright.xml
+set;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/anim/exittoleft.xml
+set;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/anim/exittoright.xml
+string;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/googsvcsjson/values/goog_svcs_json.xml
+string;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/values/strings.xml
+style;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/values/styles.xml
+style;obj/Debug/res/values/styles.xml
+translate;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/anim/enterfromleft.xml
+translate;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/anim/enterfromright.xml
+translate;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/anim/exittoleft.xml
+translate;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/anim/exittoright.xml
+xamarin.communitytoolkit.ui.views.AutoFitTextureView;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/64/jl/res/layout/camerafragment.xml
+xamarin.forms.platform.android.appcompat.FormsViewPager;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/rootlayout.xml
+xamarin.forms.platform.android.ShellFlyoutLayout;/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts.Android/obj/Debug/lp/77/jl/res/layout/flyoutcontent.xml

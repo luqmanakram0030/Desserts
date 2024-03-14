@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desserts.TabbedPage1"
+            NavigationPage.HasNavigationBar="False"
+            xmlns:Helper="clr-namespace:Desserts.Helpers"
+            xmlns:views="clr-namespace:Desserts.Views"
+            BackgroundColor="Transparent"
+            SelectedTabColor="#FB6B90"
+            UnselectedTabColor="Gray"
+            BarBackgroundColor="White">
+
+    <NavigationPage Title="All Desserts" BarTextColor="#FB6B90" IconImageSource="Assets/alldessert.png">
+        <x:Arguments>
+            <views:DashboardPage/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="My Desserts" BarTextColor="#FB6B90" IconImageSource="Assets/cupcake.png">
+        <x:Arguments>
+            <views:MyDessertsPage/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Title="My Desserts" BarTextColor="#FB6B90" IconImageSource="Assets/heart.png">
+        <x:Arguments>
+            <views:MyDessertsPage/>
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

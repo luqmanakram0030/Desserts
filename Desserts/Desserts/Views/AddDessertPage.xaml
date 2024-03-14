@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Desserts.Views.AddDessertPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             NavigationPage.HasNavigationBar="False"
+             Shell.TabBarIsVisible="False"
+             xmlns:Helper="clr-namespace:Desserts.Helpers"
+             xmlns:controls="clr-namespace:Desserts.Helpers"
+             Background="{StaticResource Gradient}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*" >
+            <Grid ColumnDefinitions="30,*"
+               Margin="15,20,0,0">
+                    <ImageButton Source="Assets/back.png"
+                                   VerticalOptions="CenterAndExpand"
+                                   HeightRequest="{OnPlatform Android='20', iOS='20',UWP='30'}"
+                                   WidthRequest="{OnPlatform Android='20', iOS='20',UWP='30'}"
+                                   Padding="0"
+                                   BackgroundColor="Transparent"
+                                   Grid.Column="0"
+                                   x:Name="back"
+                                   Clicked="back_Clicked"/>
+
+                    <Label Text="Add Dessert"
+                           TextColor="Black"
+                           FontAttributes="Bold"
+                           Grid.Column="1"
+                           VerticalTextAlignment="Center"/>
+                </Grid>
+            <ScrollView Grid.Row="1"
+                        Margin="20">
+                <StackLayout>
+
+                    <Grid HorizontalOptions="CenterAndExpand"
+                          WidthRequest="{OnPlatform Android='120', UWP='200'}"
+                          Margin="0,20">
+
+                        <xct:AvatarView Source="{Binding profilePic, Mode=TwoWay}"
+                                        CornerRadius="120"
+                                        HeightRequest="{OnPlatform Android='120', UWP='200'}"
+                                        WidthRequest="{OnPlatform Android='120', UWP='200'}"
+                                        Padding="0"
+                                        Size="{OnPlatform Android='120', UWP='200'}"
+                                        Aspect="AspectFill"
+                                        VerticalOptions="StartAndExpand"
+                                        HorizontalOptions="CenterAndExpand"/>
+
+                        <ImageButton Source="Assets/camera_icon.png"
+                                    HorizontalOptions="EndAndExpand"
+                                    VerticalOptions="EndAndExpand"
+                                     HeightRequest="30"
+                                     WidthRequest="30"
+                                    Padding="{OnPlatform Android='5', UWP='5'}"
+                                    BackgroundColor="{StaticResource baseColor}"
+                                     CornerRadius="{OnPlatform Android='80', UWP='80'}"
+                                     Command="{Binding ImageCmd,Mode=TwoWay}"/>
+                    </Grid>
+
+                    <Frame BorderColor="White"
+                           CornerRadius="8"
+                           BackgroundColor="White"
+                           Padding="10,5"
+                           HasShadow="False">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+
+                            <Image x:Name="entryImage" 
+                                   Source="Assets/cupcake.png"
+                                   Grid.Column="0"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
+                                   HorizontalOptions="StartAndExpand"
+                                   VerticalOptions="CenterAndExpand"/>
+                            <Entry Placeholder="Name"
+                                   Grid.Column="1"
+                                   BackgroundColor="White"
+                                   TextColor="Black"
+                                   PlaceholderColor="Gray"
+                                    Text="{Binding dessert.name, Mode=TwoWay}"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame BorderColor="White"
+                           CornerRadius="8"
+                           BackgroundColor="White"
+                           Padding="10,5"
+                           HasShadow="False">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+
+                            <Image Source="Assets/meter.png"
+                                   Grid.Column="0"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
+                                   HorizontalOptions="StartAndExpand"
+                                   VerticalOptions="CenterAndExpand"/>
+                            <Entry Placeholder="Difficulty"
+                                   Grid.Column="1"
+                                   TextColor="Black"
+                                   BackgroundColor="White"
+                                   PlaceholderColor="Gray"
+                                    Text="{Binding dessert.difficulty, Mode=TwoWay}"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame BorderColor="White"
+                           CornerRadius="8"
+                           BackgroundColor="White"
+                           Padding="10,5"
+                           HasShadow="False">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+
+                            <Image Source="Assets/clock.png"
+                                   Grid.Column="0"
+                                   HeightRequest="20"
+                                   WidthRequest="20"
+                                   HorizontalOptions="StartAndExpand"
+                                   VerticalOptions="CenterAndExpand"/>
+                            <Entry Placeholder="Time"
+                                   BackgroundColor="White"
+                                   Grid.Column="1"
+                                   TextColor="Black"
+                                   PlaceholderColor="Gray"
+                                    Text="{Binding dessert.time, Mode=TwoWay}"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame BorderColor="White"
+                           CornerRadius="8"
+                           BackgroundColor="White"
+                           Padding="10,5"
+                           HasShadow="False">
+                        <StackLayout>
+                            <Grid ColumnDefinitions="Auto,*,Auto">
+
+                                <Image Source="Assets/information.png"
+                                   Grid.Column="0"
+                                       HeightRequest="20"
+                                       WidthRequest="20"
+                                   HorizontalOptions="StartAndExpand"
+                                   VerticalOptions="CenterAndExpand"/>
+                                <Label Text="Detail"
+                                       Grid.Column="1"
+                                       TextColor="Gray"/>
+                            </Grid>
+                            <Frame BorderColor="{StaticResource SecondoryColor}"
+                                   CornerRadius="8"
+                                   BackgroundColor="White"
+                                   Padding="10,5"
+                                   HasShadow="False"
+                                   HeightRequest="200">
+                                <Editor Placeholder="Detail"
+                                Grid.Column="1"
+                                   BackgroundColor="White"
+                                TextColor="Black"
+                                PlaceholderColor="Gray"
+                                 Text="{Binding dessert.description, Mode=TwoWay}"/>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+
+                    <Label Text="Add Ingredients"
+                            TextColor="Black"
+                           FontAttributes="Bold"
+                           FontSize="Subtitle"
+                           HorizontalTextAlignment="Center"/>
+
+                    <Frame BorderColor="White"
+                           CornerRadius="8"
+                           BackgroundColor="White"
+                           Padding="10,5"
+                           HasShadow="False">
+                        <StackLayout>
+
+                            <Frame BorderColor="{StaticResource SecondoryColor}"
+                                   CornerRadius="8"
+                                   BackgroundColor="White"
+                                   Padding="10,5"
+                                   HasShadow="False">
+                                <Grid ColumnDefinitions="Auto,*,Auto">
+
+                                    <Image Source="Assets/heading.png"
+                                           HeightRequest="20"
+                                           WidthRequest="20"
+                                            Grid.Column="0"
+                                            HorizontalOptions="StartAndExpand"
+                                            VerticalOptions="CenterAndExpand"/>
+                                    <Entry Placeholder="Heading"
+                                           Grid.Column="1"
+                                           TextColor="Black"
+                                   BackgroundColor="White"
+                                           PlaceholderColor="Gray"
+                                           Text="{Binding ing.Heading, Mode=TwoWay}"/>
+                                </Grid>
+
+                            </Frame>
+
+                            <Frame BorderColor="{StaticResource SecondoryColor}"
+                                   CornerRadius="8"
+                                   BackgroundColor="White"
+                                   Padding="10,5"
+                                   HasShadow="False">
+                                <Grid ColumnDefinitions="Auto,*,Auto">
+
+                                    <Image Source="Assets/menu.png"
+                                           HeightRequest="20"
+                                           WidthRequest="20"
+                                        Grid.Column="0"
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="CenterAndExpand"/>
+                                    <Entry Placeholder="Heading Description"
+                                        Grid.Column="1"
+                                   BackgroundColor="White"
+                                        TextColor="Black"
+                                        PlaceholderColor="Gray"
+                                         Text="{Binding ing.HeadingDescription, Mode=TwoWay}"/>
+                                </Grid>
+
+                            </Frame>
+
+                            <Frame BorderColor="{StaticResource SecondoryColor}"
+                                   CornerRadius="8"
+                                   BackgroundColor="White"
+                                   Padding="10,5"
+                                   HasShadow="False">
+                                <Grid ColumnDefinitions="Auto,*,Auto">
+
+                                    <Image Source="Assets/information.png"
+                                           HeightRequest="20"
+                                           WidthRequest="20"
+                                        Grid.Column="0"
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="CenterAndExpand"/>
+                                    <Entry Placeholder="Description"
+                                        Grid.Column="1"
+                                        TextColor="Black"
+                                   BackgroundColor="White"
+                                        PlaceholderColor="Gray"
+                                         Text="{Binding ing.description , Mode=TwoWay}"/>
+                                </Grid>
+
+                            </Frame>
+                            
+                            <Button Text="Add"
+                                      HorizontalOptions="CenterAndExpand"
+                                      WidthRequest="250"
+                                    HeightRequest="30"
+                                    Padding="5"
+                                      FontAttributes="Bold"
+                                      TextTransform="None"
+                                      CornerRadius="8"
+                                      BackgroundColor="{StaticResource bgcolor}"
+                                     Command="{Binding AddCmd,Mode=TwoWay}"/>
+
+                            <Frame BorderColor="{StaticResource SecondoryColor}"
+                                   CornerRadius="8"
+                                   BackgroundColor="LightGray"
+                                   Padding="10,5"
+                                   HasShadow="False"
+                                   HeightRequest="200">
+                                <CollectionView x:Name="iList"
+                                                ItemsSource="{Binding ingList,Mode=TwoWay}">
+
+                                    <CollectionView.EmptyView>
+
+                                        <StackLayout VerticalOptions="CenterAndExpand">
+
+                                            <Label Text="Add Ingredients"
+                                                   HorizontalTextAlignment="Center" 
+                                                   TextColor="Black"
+                                                   FontSize="Small"/>
+
+                                        </StackLayout>
+
+                                    </CollectionView.EmptyView>
+
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Vertical"
+                                                 VerticalItemSpacing="10"/>
+                                    </CollectionView.ItemsLayout>
+
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+
+                                            <Grid>
+
+                                                <Frame HasShadow="False"
+                                                       Padding="10,5"
+                                                       BorderColor="White"
+                                                       BackgroundColor="White"
+                                                       CornerRadius="8">
+                                                    <Grid ColumnDefinitions="Auto,*">
+
+                                                        <StackLayout Grid.Column="1"
+                                                                     Spacing="0">
+
+                                                            <Label Text="{Binding Heading}"
+                                                                   TextColor="Black"
+                                                                   FontSize="18"
+                                                                   FontAttributes="Bold"
+                                                                   IsVisible="{Binding HeadingVisible, Mode=TwoWay}"/>
+
+                                                            <Label Text="{Binding HeadingDescription}"
+                                                                   TextColor="{StaticResource baseColor}"
+                                                                   FontSize="16"
+                                                                   LineBreakMode="TailTruncation"
+                                                                   MaxLines="1"
+                                                                   IsVisible="{Binding HeadingDescVisible, Mode=TwoWay}"/>
+
+                                                            <Label Text="{Binding description}"
+                                                                   TextColor="Gray"
+                                                                   FontSize="14"
+                                                                   LineBreakMode="TailTruncation"
+                                                                   MaxLines="1"/>
+
+                                                        </StackLayout>
+                                                        
+                                                    </Grid>
+
+                                                </Frame>
+                                                <ImageButton BackgroundColor="Transparent"
+                                                             Padding="0"
+                                                             Margin="{OnPlatform Android='0', UWP='0,0,20,0'}"
+                                                             HorizontalOptions="EndAndExpand"
+                                                             VerticalOptions="StartAndExpand"
+                                                             Source="{FontImage FontFamily=UserIcon,
+                                                                Glyph={x:Static Helper:IconFonts.CloseCircle},Color=Black,Size={OnPlatform Android='20', UWP='8'}}"
+                                                            Command="{Binding Path=BindingContext.deleteingCmd, Source={x:Reference iList}}" 
+                                                            CommandParameter="{Binding .}"/>
+
+                                            </Grid>
+
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+
+                    <Button Text="Save"
+                             HorizontalOptions="CenterAndExpand"
+                             WidthRequest="250"
+                             Margin="0,20,0,10"
+                             FontAttributes="Bold"
+                             TextTransform="None"
+                             CornerRadius="8"
+                             BackgroundColor="{StaticResource bgcolor}"
+                            Command="{Binding SaveCmd,Mode=TwoWay}"/>
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

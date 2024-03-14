@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="Desserts.Views.AppShell"      
+       xmlns:views="clr-namespace:Desserts.Views"
+       xmlns:Helper="clr-namespace:Desserts.Helpers"
+       FlyoutHeaderBehavior="Fixed"
+       Shell.TabBarBackgroundColor="White"
+       Shell.TabBarUnselectedColor="Gray"
+       Shell.BackgroundColor="Transparent"
+       Shell.NavBarIsVisible="False">
+   
+
+    <TabBar Shell.TabBarTitleColor="#FB6B90" >
+
+        <Tab Icon="Assets/alldessert.png"
+              Title="All Desserts">
+
+            <ShellContent ContentTemplate="{DataTemplate views:DashboardPage}" />
+
+        </Tab>
+
+        <Tab  Icon="Assets/cupcake.png"
+              Title="My Desserts">
+
+            <ShellContent ContentTemplate="{DataTemplate views:MyDessertsPage}"/>
+        </Tab>
+
+        <Tab  Icon="Assets/heart.png"
+              Title="Bookmarks">
+
+            <ShellContent ContentTemplate="{DataTemplate views:FavouritePage}"/>
+        </Tab>
+
+    </TabBar>
+</Shell>

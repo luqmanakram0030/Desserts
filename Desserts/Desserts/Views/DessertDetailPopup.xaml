@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<xct:Popup
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Desserts.Views.DessertDetailPopup"
+    BackgroundColor="Transparent" HeightRequest="300">
+
+    <StackLayout HeightRequest="450">
+        <Frame BackgroundColor="Transparent" Padding="10" >
+            <StackLayout  Spacing="10"  HorizontalOptions="CenterAndExpand">
+                <Label x:Name="name" FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" FontFamily="OpenSansSemibold"
+             TextColor="Black"
+            VerticalOptions="CenterAndExpand" 
+            HorizontalOptions="Center" />
+                <Image x:Name="img"/>
+                <Label x:Name="des" FontSize="Large" HorizontalTextAlignment="Center" FontAttributes="Bold" FontFamily="OpenSansSemibold"
+            Text="" TextColor="Black"
+            VerticalOptions="CenterAndExpand" 
+            HorizontalOptions="Center" />
+
+                <Grid ColumnSpacing="20" ColumnDefinitions="5*,5*" HorizontalOptions="Center" Margin="0,5,0,0">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                        <Image Source="clock.png"  HeightRequest="18" />
+                        <Label     FontAttributes="Bold" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" TextColor="Black"   Margin="0,0,0,0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span x:Name="time"   FontSize="15" FontFamily="OpenSansSemibold"/>
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+                        </Label>
+
+                    </StackLayout >
+                    <StackLayout Orientation="Horizontal" Grid.Column="1"
+                                                          HorizontalOptions="Start">
+                        <Image Source="meter.png" HeightRequest="18"/>
+                        <Label x:Name="Def" FontSize="15" FontFamily="OpenSansSemibold" Margin="0,0,10,0"  HorizontalOptions="EndAndExpand"/>
+
+
+                    </StackLayout>
+                </Grid>
+                <Label Text="Ingredients:" HorizontalOptions="StartAndExpand" FontSize="Large" HorizontalTextAlignment="Start" FontAttributes="Bold" FontFamily="OpenSansSemibold"
+             TextColor="Black"
+            VerticalOptions="CenterAndExpand" 
+            />
+                <ListView x:Name="ingredientListView" HeightRequest="200" Margin="0,0,0,20">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label VerticalTextAlignment="Center" Text="{Binding}" FontFamily="OpenSansRegular" FontSize="15" TextColor="Black"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button VerticalOptions="EndAndExpand"
+                    
+                    Text="close" FontFamily="OpenSansSemibold"
+                    
+                    Clicked="Button_Clicked"
+                    HorizontalOptions="Center"
+                    Margin="0,0,0,20"
+                    WidthRequest="265"
+                    BackgroundColor="SaddleBrown"
+                    TextColor="White"
+                    />
+            </StackLayout>
+        </Frame>
+
+    </StackLayout>
+
+
+
+
+</xct:Popup>
+

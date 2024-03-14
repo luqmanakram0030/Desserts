@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Desserts.Views.DashboardPage"     
+            xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:Helper="clr-namespace:Desserts.Helpers"
+            NavigationPage.HasNavigationBar="False"
+             xmlns:controls="clr-namespace:Desserts.Helpers"
+             Background="{StaticResource Gradient}">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*" Margin="0,0,0,20">
+            <Grid ColumnDefinitions="Auto,*"
+                  Grid.Column="0">
+                <StackLayout 
+                                 Spacing="3"
+                                Grid.Column="0"
+                             Margin="20,20,0,0"
+                                HorizontalOptions="StartAndExpand">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="logout_Clicked"/>
+                    </StackLayout.GestureRecognizers>
+                    <ImageButton Source="Assets/logout_b.png"
+                                 Padding="0" 
+                                 HeightRequest="20"
+                                 WidthRequest="20"
+                                 BackgroundColor="Transparent"
+                                HorizontalOptions="CenterAndExpand"
+                                x:Name="logout"
+                                 xct:IconTintColorEffect.TintColor="Black"
+                                Clicked="logout_Clicked">
+                    </ImageButton>
+                    <Label Text="Logout"
+                               FontFamily="Poppins-SemiBold"
+                                TextColor="Black"
+                               VerticalTextAlignment="Center"/>
+                </StackLayout>
+                <Frame HasShadow="False"
+                       BackgroundColor="White"
+                       BorderColor="Transparent"
+                       VerticalOptions="CenterAndExpand"
+                       Padding="{OnPlatform Android='16,0,10,0', iOS='16,0,16,0' ,UWP='10,0,10,0'}"
+                       HeightRequest="50"
+                       Margin="0,15,20,10"
+                       CornerRadius="16"
+                         Grid.Column="1">
+                    <Grid ColumnDefinitions="30,*,2,auto">
+                        <Image Source="Assets/search.png"
+                               VerticalOptions="Center"
+                               HeightRequest="24" />
+
+                        <Entry VerticalOptions="Center"
+                               x:Name="Search"
+                               Grid.Column="1"
+                               Placeholder="Search here"
+                               TextColor="#2b2b2b"
+                               BackgroundColor="White"
+                               FontSize="Small"
+                               FontFamily="Regular"
+                               Margin="{OnPlatform Android='0,0,0,0', iOS='0'}" 
+                               TextChanged="Search_TextChanged"/>
+
+                    </Grid>
+                </Frame>
+
+            </Grid>
+
+            <StackLayout Grid.Row="1">
+                <!--<xct:StateLayout.StateViews>
+
+                    <xct:StateView StateKey="Loading" RepeatCount="10">
+                        <xct:StateView.Template>
+                            <DataTemplate>
+                                <StackLayout Margin="20,10">
+
+                                    <controls:SkeletonView Color="Silver"
+                                                               HeightRequest="90"
+                                                               CornerRadius="10"
+                                                               HorizontalOptions="FillAndExpand"/>
+
+                                </StackLayout>
+                            </DataTemplate>
+                        </xct:StateView.Template>
+                    </xct:StateView>
+
+                </xct:StateLayout.StateViews>-->
+                <StackLayout Orientation="Horizontal"
+                             IsVisible="{Binding IsBusy,Mode=TwoWay}"
+                             HorizontalOptions="CenterAndExpand">
+                    <ActivityIndicator HeightRequest="25"
+                                                IsRunning="True"
+
+                                       WidthRequest="25"
+                                                Color="{StaticResource baseColor}" />
+
+                    <Label VerticalTextAlignment="Center"
+                           Text="Loading ..." 
+                           TextColor="Black"/>
+                </StackLayout>
+
+                <CollectionView x:Name="dessertlist"
+                             IsVisible="{Binding Busy,Mode=TwoWay}" VerticalScrollBarVisibility="Never" Margin="0,0,25,0" ItemsSource="{Binding dessertModels}"  >
+                     <CollectionView.EmptyView>
+                         <Label Text="No available desserts at this moment."
+                                TextColor="Black"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"/>
+                     </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+
+                            <StackLayout>
+                                <Grid >
+
+                                    <Grid RowDefinitions="105" VerticalOptions="End" Margin="50,0,0,0">
+                                        <Frame BorderColor="Transparent" BackgroundColor="#e9e9e9" CornerRadius="10" Grid.ColumnSpan="2" HasShadow="False"  Padding="0" HeightRequest="105">
+                                            <Frame.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Path=BindingContext.SelectCmd, Source={x:Reference dessertlist}}" CommandParameter="{Binding .}" />
+                                            </Frame.GestureRecognizers>
+                                        </Frame>
+                                        <Frame CornerRadius="12"
+                                           BackgroundColor="{StaticResource baseColor}"
+                                           HeightRequest="80" 
+                                           WidthRequest="80"
+                                           Padding="0"
+                                           Grid.Column="0"
+                                           Margin="-35,-30,0,0"
+                                            HorizontalOptions="StartAndExpand" 
+                                           VerticalOptions="EndAndExpand"  >
+                                            <Image HeightRequest="70" WidthRequest="70" Aspect="AspectFit" VerticalOptions="CenterAndExpand" Source="{Binding image}"/>
+                                        </Frame>
+                                        <StackLayout Grid.ColumnSpan="2" VerticalOptions="StartAndExpand" Spacing="5" Margin="60,10,05,0" HorizontalOptions="StartAndExpand">
+
+                                            <Label Text="{Binding name}"   FontSize="18"  FontFamily="OpenSansSemibold" TextColor="Black"   Margin="0,0,0,0"/>
+                                            <Label Text="{Binding description}" FontSize="12" TextColor="Gray" LineBreakMode="TailTruncation" MaxLines="1" HorizontalOptions="StartAndExpand"/>
+                                            <StackLayout Orientation="Horizontal"  Margin="0,5,0,0" Spacing="50">
+                                                <StackLayout Orientation="Horizontal" HorizontalOptions="{OnPlatform Android='Start', UWP='Start'}" >
+                                                    <Image Source="Assets/clock.png"  HeightRequest="18" />
+                                                    <Label     FontAttributes="Bold" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center" TextColor="Black"   Margin="0,0,0,0">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <!--<Span Text="⏱" FontSize="18" FontFamily="OpenSansSemibold"/>-->
+                                                                <Span Text="{Binding time}"   FontSize="15" FontFamily="OpenSansSemibold"/>
+
+                                                            </FormattedString>
+
+                                                        </Label.FormattedText>
+                                                    </Label>
+
+                                                </StackLayout >
+                                                <StackLayout Orientation="Horizontal" Grid.Column="1" HorizontalOptions="{OnPlatform Android='Start', UWP='Start'}">
+                                                    <Image Source="Assets/meter.png" HeightRequest="18"/>
+                                                    <Label Text="{Binding difficulty}" TextColor="Black" FontSize="15" FontFamily="OpenSansSemibold" Margin="0,0,10,0"  HorizontalOptions="EndAndExpand"/>
+                                                </StackLayout>
+                                                
+                                            </StackLayout>
+
+
+                                        </StackLayout>
+                                        <Grid.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.SelectCmd, Source={x:Reference dessertlist}}" CommandParameter="{Binding .}" />
+
+                                        </Grid.GestureRecognizers>
+
+                                    </Grid>
+                                    <ImageButton Source="{Binding fav_image,Mode=TwoWay}"
+                                                 HeightRequest="20" 
+                                                 HorizontalOptions="EndAndExpand" 
+                                                 VerticalOptions="EndAndExpand"
+                                                 Margin="20"
+                                                 BackgroundColor="Transparent"
+                                                 Command="{Binding Path=BindingContext.FavCmd, Source={x:Reference dessertlist}}"
+                                                 CommandParameter="{Binding .}"/>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Path=BindingContext.SelectCmd, Source={x:Reference dessertlist}}" CommandParameter="{Binding .}" />
+
+                                    </Grid.GestureRecognizers>
+                                </Grid>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="1" HorizontalItemSpacing="0" VerticalItemSpacing="20"/>
+                    </CollectionView.ItemsLayout>
+
+                </CollectionView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+
