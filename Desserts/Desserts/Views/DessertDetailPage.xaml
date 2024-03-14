@@ -76,6 +76,39 @@
                             Text="" TextColor="Black"
                             VerticalOptions="CenterAndExpand" 
                             HorizontalOptions="Center" />
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+
+                               <Frame  CornerRadius="5" Padding="10" HorizontalOptions="Start" VerticalOptions="Center">
+                            <Label Text="-" FontAttributes="Bold" FontSize="16"/>
+<Frame.GestureRecognizers>
+    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+
+</Frame.GestureRecognizers>
+                        </Frame>
+
+                      <Frame CornerRadius="5" BackgroundColor="{StaticResource SecondoryColor}" Padding="10" HorizontalOptions="Start" VerticalOptions="Center">
+                            <Label  TextColor="White" FontSize="16" FontAttributes="Bold">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding count, Mode=TwoWay}"/>
+                                        <Span Text=" "/>
+                                        <Span Text="People"/>
+
+                                    </FormattedString>
+
+                                </Label.FormattedText>
+                                </Label>
+
+                        </Frame>
+                   <Frame x:Name="Increase" CornerRadius="5" Padding="10" HorizontalOptions="Start" VerticalOptions="Center">
+                            <Label Text="+" FontAttributes="Bold" FontSize="16"/>
+                       <Frame.GestureRecognizers>
+    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+
+</Frame.GestureRecognizers>
+                        </Frame>
+                        </StackLayout>
+                     
                     <CollectionView x:Name="ingredientListView" HeightRequest="300"  HorizontalOptions="CenterAndExpand" Margin="20">
                         <!--<CollectionView.Header>
                                 <Label Text="Ingredients:" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="18" TextColor="Black"
@@ -88,7 +121,20 @@
 
 
                                     <StackLayout IsVisible="{Binding HeadingVisible}" Grid.Row="0" Spacing="0" >
-                                        <Label Text="{Binding Heading}" FontAttributes="Bold" FontSize="18" TextColor="Black"  />
+                                        <Label Text="{Binding Heading}" FontAttributes="Bold" FontSize="18" TextColor="Black"  >
+                                                                                                            <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding Wight}"/>
+                                                                        
+                                                                        <Span Text="{Binding UOM}"/>
+                                                                        <Span Text=" "/>
+                                                                        <Span Text="{Binding Heading}"/>
+
+                                                                    </FormattedString>
+
+                                                                </Label.FormattedText>
+
+                                                            </Label>
                                         <Label Text="{Binding HeadingDescription}"  FontAttributes="Bold" FontSize="12" TextColor="Black"  />
 
                                     </StackLayout>
@@ -101,23 +147,74 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
+                        <Label FontSize="Large" Text="Comments:"
+                           HorizontalTextAlignment="Start" 
+                           FontAttributes="Bold" 
+                           FontFamily="OpenSansSemibold"
+                             TextColor="Black"
+                            VerticalOptions="CenterAndExpand" 
+                            HorizontalOptions="Start" />
+
+                     <CollectionView x:Name="CommentView" HeightRequest="300"  HorizontalOptions="CenterAndExpand" Margin="20">
+                        <!--<CollectionView.Header>
+                                <Label Text="Ingredients:" HorizontalOptions="StartAndExpand" FontAttributes="Bold" FontSize="18" TextColor="Black"
+                                    VerticalOptions="CenterAndExpand" 
+                                    />
+                            </CollectionView.Header>-->
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                              <Frame CornerRadius="10" Margin="5">
+
+                                <StackLayout Spacing="0">
+
+
+                                   
+                                    
+                                         
+                                  
+                                   
+                                        <Label Text="{Binding comment, Mode=TwoWay}" Grid.Column="1"  FontSize="12" TextColor="Black" Margin="0,0,20,20"/>
+                                    <BoxView HeightRequest="1" Color="Gray"/>
+                                     <Label   FontSize="14" TextColor="Black" >
+                                       <Label.FormattedText>
+                                           <FormattedString>
+                                               <Span Text="Comment by: "/>
+                                                 <Span Text="{Binding Email}"/>
+                                           </FormattedString>
+
+                                       </Label.FormattedText>
+                                       </Label>
+                                </StackLayout>
+                                </Frame>
+
+                                </StackLayout>
+                              
+                                
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
                 </StackLayout>
 
             </ScrollView>
-            <Button VerticalOptions="EndAndExpand"
-                    ImageSource="{FontImage FontFamily=UserIcon, 
-                                        Glyph={x:Static Helper:IconFonts.CommentOutline} , Color=White ,Size=20}"
-                    Grid.Row="2"
-                    Text="Comment" 
-                    ContentLayout="Left,10"
-                    FontAttributes="Bold"
-                    Margin="0,0,0,20"
-                    FontFamily="OpenSansSemibold"
-                    Clicked="Button_Clicked"
-                    HorizontalOptions="CenterAndExpand"
-                    Padding="40,10"
-                    BackgroundColor="SaddleBrown"
-                    TextColor="White"/>
+             <Frame Grid.Row="2"  BorderColor="Black" BackgroundColor="White"  CornerRadius="20" Margin="10" Padding="0" VerticalOptions="EndAndExpand"
+                        
+                        >
+                    <Grid Margin="0"
+                            ColumnDefinitions="*, Auto">
+                        <Entry TextColor="Black" x:Name="CommentEntry" Margin="15,0,0,0" Text="{Binding CommentText, Mode=TwoWay}"
+                                Placeholder="Leave your thoughts here..."
+                                />
+               
+                        <Button Padding="0"  Text="Post" BackgroundColor="{StaticResource SecondoryColor}" TextTransform="None"
+                    Grid.Column="1" Clicked="Button_Clicked_1"
+                    HeightRequest="25"
+                    HorizontalOptions="EndAndExpand"/>
+
+                    </Grid>
+                </Frame>
+                
+      
         </Grid>
     </ContentPage.Content>
 </ContentPage>

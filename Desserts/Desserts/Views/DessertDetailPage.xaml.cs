@@ -7,6 +7,8 @@ using Dessert.Models;
 using Desserts.Models;
 using Desserts.Services.Implementation;
 using Desserts.Services.Interface;
+using Firebase.Auth;
+using FirebaseAdmin.Messaging;
 using Rg.Plugins.Popup.Extensions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -46,14 +48,22 @@ namespace Desserts.Views
             get { return _count; }
             set { _count = value;OnPropertyChanged(); }
         }
+         private string _CommentText;
+
+        public string CommentText
+        {
+            get { return _CommentText; }
+            set { _CommentText = value;OnPropertyChanged(); }
+        }
 
         private readonly IDessert _dessertService;
         private DessertModel dessert;
         public DessertDetailPage (DessertModel dessert)
         {
 			InitializeComponent ();
+            BindingContext = this;
             _dessertService = DependencyService.Resolve<IDessert>();
-            count = 0;
+            count = 4;
             this.dessert = dessert;
             if (this.dessert.BookMarks != null|| this.dessert.BookMarks.Count() != 0)
             {
@@ -91,11 +101,12 @@ namespace Desserts.Views
             Def.Text = dessert.difficulty;
             foreach (var item in dessert.ingredientModels)
             {
-                count = count + 1;
-                item.id = count;
+                item.WightforSingle = item.Wight;
+              item.Wight=  item.Wight*count;
             }
 
             ingredientListView.ItemsSource = dessert.ingredientModels;
+            CommentView.ItemsSource = dessert.Comments;
         }
 
         async void Button_Clicked(System.Object sender, System.EventArgs e)
@@ -148,6 +159,88 @@ namespace Desserts.Views
             else
             {
                 await DisplayAlert("", "Connect your device to internet.", "OK");
+            }
+        }
+
+       
+
+        async void Button_Clicked_1(System.Object sender, System.EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(CommentEntry.Text))
+                {
+                    var current = Connectivity.NetworkAccess;
+                    if (current == NetworkAccess.Internet)
+                    {
+                        try
+                        {
+                            IsBusy = true;
+                            dessert.Comments.Add(new CommentsModel
+                            {
+                                Email = Preferences.Get("Name", ""),
+                                comment = CommentEntry.Text,
+                            });
+                            var status = await _dessertService.UpdateDessert(dessert);
+                            if (status)
+                            {
+                                CommentView.ItemsSource = null;
+                                CommentView.ItemsSource = dessert.Comments;
+                                CommentEntry.Text = "";
+                            }
+                            IsBusy = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            IsBusy = false;
+                            await DisplayAlert("", ex.Message, "Ok");
+                        }
+                    }
+                    else
+                    {
+                        await DisplayAlert("", "Connect your device to internet.", "OK");
+                    }
+                }
+                else
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        {
+            if (count == 1)
+            {
+
+            }
+            else
+            {
+                count--;
+                foreach (var item in dessert.ingredientModels)
+                {
+                    item.Wight = item.WightforSingle * count;
+                    
+                }
+            }
+           
+            
+
+        }
+
+        void TapGestureRecognizer_Tapped_1(System.Object sender, System.EventArgs e)
+        {
+            count++;
+            foreach (var item in dessert.ingredientModels)
+            {
+
+                item.Wight = item.WightforSingle * count;
+
             }
         }
     }

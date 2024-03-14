@@ -15,6 +15,21 @@ namespace Desserts.Models
 			get { return _Heading; }
 			set { _Heading = value; OnpropertyChanged(); }
 		}
+		private double _Wight;
+
+		public double Wight
+        {
+			get { return _Wight; }
+			set { _Wight = value; OnpropertyChanged(); }
+		}
+		public  double WightforSingle { set; get; }
+		private string _UOM;
+
+		public string UOM
+        {
+			get { return _UOM; }
+			set { _UOM = value; OnpropertyChanged(); }
+		}
 		private string _HeadingDescription;
 
 		public string HeadingDescription

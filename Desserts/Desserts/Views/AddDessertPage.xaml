@@ -201,6 +201,52 @@
                                    HasShadow="False">
                                 <Grid ColumnDefinitions="Auto,*,Auto">
 
+                                    <Image Source="Assets/heading.png"
+                                           HeightRequest="20"
+                                           WidthRequest="20"
+                                            Grid.Column="0"
+                                            HorizontalOptions="StartAndExpand"
+                                            VerticalOptions="CenterAndExpand"/>
+                                    <Entry Placeholder="Wight"
+                                           Grid.Column="1"
+                                           TextColor="Black"
+                                   BackgroundColor="White"
+                                           PlaceholderColor="Gray"
+                                           Text="{Binding ing.Wight, Mode=TwoWay}"/>
+                                </Grid>
+
+                            </Frame>
+
+                            <Frame BorderColor="{StaticResource SecondoryColor}"
+                                   CornerRadius="8"
+                                   BackgroundColor="White"
+                                   Padding="10,5"
+                                   HasShadow="False">
+                                <Grid ColumnDefinitions="Auto,*,Auto">
+
+                                    <Image Source="Assets/heading.png"
+                                           HeightRequest="20"
+                                           WidthRequest="20"
+                                            Grid.Column="0"
+                                            HorizontalOptions="StartAndExpand"
+                                            VerticalOptions="CenterAndExpand"/>
+                                    <Entry Placeholder="Unit of Measure"
+                                           Grid.Column="1"
+                                           TextColor="Black"
+                                   BackgroundColor="White"
+                                           PlaceholderColor="Gray"
+                                           Text="{Binding ing.UOM, Mode=TwoWay}"/>
+                                </Grid>
+
+                            </Frame>
+
+                            <Frame BorderColor="{StaticResource SecondoryColor}"
+                                   CornerRadius="8"
+                                   BackgroundColor="White"
+                                   Padding="10,5"
+                                   HasShadow="False">
+                                <Grid ColumnDefinitions="Auto,*,Auto">
+
                                     <Image Source="Assets/menu.png"
                                            HeightRequest="20"
                                            WidthRequest="20"
@@ -280,7 +326,8 @@
 
                                     <CollectionView.ItemTemplate>
                                         <DataTemplate>
-
+                                            
+                                     
                                             <Grid>
 
                                                 <Frame HasShadow="False"
@@ -288,6 +335,13 @@
                                                        BorderColor="White"
                                                        BackgroundColor="White"
                                                        CornerRadius="8">
+                                                    <StackLayout Orientation="Horizontal">
+                                                 <Label Text="{Binding id}"
+                                                                   TextColor="Black"
+                                                                   FontSize="18" VerticalTextAlignment="Center"
+                                                                   FontAttributes="Bold"
+                                                                   />
+                                               <BoxView WidthRequest="1" Color="Gray"/>
                                                     <Grid ColumnDefinitions="Auto,*">
 
                                                         <StackLayout Grid.Column="1"
@@ -297,7 +351,20 @@
                                                                    TextColor="Black"
                                                                    FontSize="18"
                                                                    FontAttributes="Bold"
-                                                                   IsVisible="{Binding HeadingVisible, Mode=TwoWay}"/>
+                                                                   IsVisible="{Binding HeadingVisible, Mode=TwoWay}">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding Wight}"/>
+                                                                        
+                                                                        <Span Text="{Binding UOM}"/>
+                                                                        <Span Text=" "/>
+                                                                        <Span Text="{Binding Heading}"/>
+
+                                                                    </FormattedString>
+
+                                                                </Label.FormattedText>
+
+                                                            </Label>
 
                                                             <Label Text="{Binding HeadingDescription}"
                                                                    TextColor="{StaticResource baseColor}"
@@ -316,6 +383,7 @@
                                                         
                                                     </Grid>
 
+                                                 </StackLayout>
                                                 </Frame>
                                                 <ImageButton BackgroundColor="Transparent"
                                                              Padding="0"
@@ -328,6 +396,9 @@
                                                             CommandParameter="{Binding .}"/>
 
                                             </Grid>
+
+                                          
+
 
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>

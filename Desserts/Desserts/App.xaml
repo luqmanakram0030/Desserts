@@ -4,6 +4,7 @@
              x:Class="Desserts.App">
     <Application.Resources>
         <ResourceDictionary>
+
             <Color x:Key="PrimaryColor">#81248A</Color>
             <Color x:Key="SecondoryColor">#E70B89</Color>
             <LinearGradientBrush x:Key="Gradient"  StartPoint="0,0" EndPoint="0,1">

@@ -377,6 +377,7 @@
     <None Include="Assets\pecan.png" />
     <None Include="Assets\meter.png" />
     <None Include="Assets\mango.png" />
+    <AndroidAsset Include="Assets\messagebutton.svg" />
   </ItemGroup>
   <ItemGroup>
     <GoogleServicesJson Include="google-services.json" />
