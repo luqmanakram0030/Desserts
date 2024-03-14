@@ -18,6 +18,7 @@ namespace Desserts
             InitializeComponent();
             DependencyService.Register<IUser, UserService>();
             DependencyService.Register<IDessert, DessertService>();
+            DependencyService.Register<IBuyingList, BuyingListService>();
             //Preferences.Remove("Islogined", "");
             var isLogin = Preferences.Get("Islogined", "default");
             if (isLogin == "default")

@@ -25,3 +25,4 @@
 /Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts/obj/Debug/netstandard2.0/Desserts.dll
 /Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts/obj/Debug/netstandard2.0/refint/Desserts.dll
 /Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts/obj/Debug/netstandard2.0/Desserts.pdb
+/Users/luqmanakram/Downloads/Projects/Luqman Akram/Desserts/Desserts/Desserts/obj/Debug/netstandard2.0/Views/ShoppingListPage.xaml.g.cs

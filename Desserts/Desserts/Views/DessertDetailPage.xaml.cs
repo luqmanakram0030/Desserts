@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Windows.Input;
 using Dessert.Models;
 using Desserts.Models;
 using Desserts.Services.Implementation;
@@ -41,6 +42,8 @@ namespace Desserts.Views
                 OnPropertyChanged();
             }
         }
+        public ICommand AddToCartCMD { get; set; }
+        private readonly IBuyingList _ShopinglistService;
         private int _count;
 
         public int count
@@ -62,6 +65,8 @@ namespace Desserts.Views
         {
 			InitializeComponent ();
             BindingContext = this;
+            _ShopinglistService = DependencyService.Resolve<IBuyingList>();
+            AddToCartCMD = new Command(AddToCartAsync);
             _dessertService = DependencyService.Resolve<IDessert>();
             count = 4;
             this.dessert = dessert;
@@ -108,11 +113,28 @@ namespace Desserts.Views
             ingredientListView.ItemsSource = dessert.ingredientModels;
             CommentView.ItemsSource = dessert.Comments;
         }
-
-        async void Button_Clicked(System.Object sender, System.EventArgs e)
+        public async void AddToCartAsync(object obj)
         {
-           await Navigation.PushModalAsync(new CommentPage());
+            try
+            {
+                var item = obj as Ingredient;
+
+           bool result=    await _ShopinglistService.CreateBuyingList(item);
+                if (result)
+                {
+                    await DisplayAlert("Success", "Successfully Added!", "ok");
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Something Wrong!", "ok");
+                }
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage.DisplayAlert("", ex.Message, "Ok");
+            }
         }
+       
 
         private async void back_Clicked(object sender, EventArgs e)
         {

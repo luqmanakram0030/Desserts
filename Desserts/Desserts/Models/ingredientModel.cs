@@ -7,7 +7,8 @@ namespace Desserts.Models
 {
 	public class Ingredient : BaseViewModel
 	{
-		public int id { get; set; }
+        public string Key { get; set; }
+        public int id { get; set; }
 		private string _Heading;
 
 		public string Heading

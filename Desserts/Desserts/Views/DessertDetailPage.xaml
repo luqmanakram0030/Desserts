@@ -121,7 +121,9 @@
 
 
                                     <StackLayout IsVisible="{Binding HeadingVisible}" Grid.Row="0" Spacing="0" >
-                                        <Label Text="{Binding Heading}" FontAttributes="Bold" FontSize="18" TextColor="Black"  >
+                                        <StackLayout Orientation="Horizontal">
+                                            <StackLayout>
+                                             <Label Text="{Binding Heading}" FontAttributes="Bold" FontSize="18" TextColor="Black"  >
                                                                                                             <Label.FormattedText>
                                                                     <FormattedString>
                                                                         <Span Text="{Binding Wight}"/>
@@ -137,6 +139,15 @@
                                                             </Label>
                                         <Label Text="{Binding HeadingDescription}"  FontAttributes="Bold" FontSize="12" TextColor="Black"  />
 
+
+                                       </StackLayout>
+                                            <Button Padding="0" VerticalOptions="Center" Margin="0" Text="Add to cart" BackgroundColor="{StaticResource SecondoryColor}" TextTransform="None"
+                    Grid.Column="1" Command="{Binding Path=BindingContext.AddToCartCMD, Source={x:Reference ingredientListView}}" CommandParameter="{Binding .}"
+                    HeightRequest="25"
+                    HorizontalOptions="EndAndExpand"/>
+                                        </StackLayout>
+                                       
+                                   
                                     </StackLayout>
                                     <Grid Grid.Row="1" ColumnDefinitions="30,*" ColumnSpacing="15">
                                         <Label Text="{Binding id}"  FontSize="18" TextColor="Black" />

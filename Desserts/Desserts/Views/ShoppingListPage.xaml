@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Desserts.Views.ShoppingListPage" xmlns:Helper="clr-namespace:Desserts.Helpers">
+    <ContentPage.Content>
+        <StackLayout>
+               <CollectionView x:Name="iList"
+                                                ItemsSource="{Binding Ingredientlist,Mode=TwoWay}">
+
+
+                                    <CollectionView.EmptyView>
+
+                                        <StackLayout VerticalOptions="CenterAndExpand">
+
+                                            <Label Text=" No available List at this moment."
+                                                   HorizontalTextAlignment="Center" 
+                                                   TextColor="Black"
+                                                   FontSize="Small"/>
+
+                                        </StackLayout>
+
+                                    </CollectionView.EmptyView>
+
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Vertical"
+                                                 VerticalItemSpacing="10"/>
+                                    </CollectionView.ItemsLayout>
+
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            
+                                     
+                                            <Grid>
+
+                                                 <Frame BorderColor="Transparent" BackgroundColor="#e9e9e9" CornerRadius="10" Grid.ColumnSpan="2" HasShadow="False"  Padding="0" HeightRequest="105">
+                                                    <StackLayout Orientation="Horizontal">
+                                                 <Label Text="{Binding id}"
+                                                                   TextColor="Black"
+                                                                   FontSize="18" VerticalTextAlignment="Center"
+                                                                   FontAttributes="Bold"
+                                                                   />
+                                               <BoxView WidthRequest="1" Color="Gray"/>
+                                                    <Grid ColumnDefinitions="Auto,*">
+
+                                                        <StackLayout Grid.Column="1"
+                                                                     Spacing="0">
+
+                                                            <Label Text="{Binding Heading}"
+                                                                   TextColor="Black"
+                                                                   FontSize="18"
+                                                                   FontAttributes="Bold"
+                                                                   IsVisible="{Binding HeadingVisible, Mode=TwoWay}">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding Wight}"/>
+                                                                        
+                                                                        <Span Text="{Binding UOM}"/>
+                                                                        <Span Text=" "/>
+                                                                        <Span Text="{Binding Heading}"/>
+
+                                                                    </FormattedString>
+
+                                                                </Label.FormattedText>
+
+                                                            </Label>
+
+                                                            <Label Text="{Binding HeadingDescription}"
+                                                                   TextColor="{StaticResource baseColor}"
+                                                                   FontSize="16"
+                                                                   LineBreakMode="TailTruncation"
+                                                                   MaxLines="1"
+                                                                   IsVisible="{Binding HeadingDescVisible, Mode=TwoWay}"/>
+
+                                                            <Label Text="{Binding description}"
+                                                                   TextColor="Gray"
+                                                                   FontSize="14"
+                                                                   LineBreakMode="TailTruncation"
+                                                                   MaxLines="1"/>
+
+                                                        </StackLayout>
+                                                        
+                                                    </Grid>
+
+                                                 </StackLayout>
+                                                </Frame>
+                                                <ImageButton BackgroundColor="Transparent"
+                                                             Padding="0"
+                                                             Margin="{OnPlatform Android='0', UWP='0,0,20,0'}"
+                                                             HorizontalOptions="EndAndExpand"
+                                                             VerticalOptions="StartAndExpand"
+                                                             Source="{FontImage FontFamily=UserIcon,
+                                                                Glyph={x:Static Helper:IconFonts.DeleteForeverOutline},Color=Red,Size={OnPlatform Android='20', UWP='8'}}"
+                                                            Command="{Binding Path=BindingContext.DeleteFromCartCMD, Source={x:Reference iList}}" 
+                                                            CommandParameter="{Binding .}"/>
+
+                                            </Grid>
+
+                                          
+
+
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+

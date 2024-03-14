@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Dessert.Models;
 using Desserts.Helpers;
@@ -25,7 +26,12 @@ namespace Desserts.Services.Implementation
                 var result = await firebase.Child(nameof(Ingredient)).PostAsync(new Ingredient()
                 {
                     id = model.id,
-                  
+                  Heading=model.Heading,
+                  HeadingDescription=model.HeadingDescription,
+                  HeadingDescVisible=model.HeadingDescVisible,
+                  description=model.description,
+                  Wight=model.Wight,
+                  UOM=model.UOM,
 
                 });
 
@@ -50,14 +56,42 @@ namespace Desserts.Services.Implementation
             }
         }
 
-        public Task<bool> DeleteBuyingList(string key)
+        public async Task<bool> DeleteBuyingList(string key)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await firebase.Child(nameof(Ingredient)).Child(key).DeleteAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
-        public Task<List<Ingredient>> GetAllBuyingListAsync()
+        public async Task<List<Ingredient>> GetAllBuyingListAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return (await firebase.Child(nameof(Ingredient)).OnceAsync<Ingredient>()).Select(f => new Ingredient
+                {
+                 
+                    id =f.Object.id,
+                    Heading = f.Object.Heading,
+                    HeadingDescription = f.Object.HeadingDescription,
+                    HeadingDescVisible = f.Object.HeadingDescVisible,
+                    description = f.Object.description,
+                    Wight = f.Object.Wight,
+                    UOM = f.Object.UOM,
+                    Key=f.Key,
+                }).ToList();
+
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("", ex.Message, "OK");
+                return null;
+            }
         }
 
         public Task<bool> UpdateBuyingList(Ingredient model)
